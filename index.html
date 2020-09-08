@@ -20,6 +20,12 @@
 
                 $('h2').each(function() {
                     $('ul').append($('<li />', {text: $(this).text()}));
+                    
+                   
+                });
+
+                $('#pages li').each(function(i) {
+                    $(this).attr('id', 'page'+(i+1));
                 });
 
 
@@ -49,14 +55,14 @@
             <div id="myDiv"></div>
             <div id="body"></div>
 
-            <!-- <ul>
+            <ul>
                 <li><a href="#firstH2">Beginning Web Development Certificate</a></li>
                 <li><a href="#secondH2">Advanced Web Development Certificate</a></li>
                 <li><a href="#thirdH2">Optional for Web Development Certificate</a></li>
                 <li><a href="#forthH2">Other Certificates</a></li>
-            </ul> -->
+            </ul>
            
-            <ul></ul>
+            <!-- <ul></ul> -->
             
             
            
