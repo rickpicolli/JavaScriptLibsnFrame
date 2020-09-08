@@ -8,15 +8,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>JavaScript Libs and Frameworks</title>
         <link href="style.css" rel="stylesheet" />
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-        <script src="jquery-3.5.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- <script src="jquery-3.5.1.min.js"></script> -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
         <script>
-            $(document).ready(function() {
-                $('#myDiv').append("<ul id='newList'><li>Beginning Web Development Certificate</li><li>Advanced Web Development Certificate</li><li>Optional for Web Development Certificate</li><li>Other Certificates</li></ul>");
-            });
-            // $('#myDiv').append("<ul id='newList'><li>Beginning Web Development Certificate</li><li>Advanced Web Development Certificate</li><li>Optional for Web Development Certificate</li><li>Other Certificates</li></ul>");
+
+          
+           
+            $(document).ready(function(){
+
+                $('h2').each(function() {
+                    $('ul').append($('<li />', {text: $(this).text()}));
+                });
+
+
+                $("a").on('click', function(event) {
+
+                    if (this.hash !== "") {
+                    event.preventDefault();
+
+                    var hash = this.hash;
+
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function(){
+                        window.location.hash = hash;
+                    });
+                    } 
+                });
+                });
         </script>
 
     </head>
@@ -26,8 +47,21 @@
         <div class="content">
             <h1>Computer Networking and Information Technology</h1>
             <div id="myDiv"></div>
+            <div id="body"></div>
 
-            <h2>Beginning Web Development Certificate</h2>
+            <!-- <ul>
+                <li><a href="#firstH2">Beginning Web Development Certificate</a></li>
+                <li><a href="#secondH2">Advanced Web Development Certificate</a></li>
+                <li><a href="#thirdH2">Optional for Web Development Certificate</a></li>
+                <li><a href="#forthH2">Other Certificates</a></li>
+            </ul> -->
+           
+            <ul></ul>
+            
+            
+           
+
+            <h2 id="firstH2">Beginning Web Development Certificate</h2>
             <h3>CNIT 131H</h3>
             <p>Introduction to HTML &amp; CSS –a light introduction course to HTML and inline CSS that is completed in 6 weeks. This course cannot be used to substitute CNIT 131 for AS Degree, onlycertificates. HTML, CSS and FTP will be learned.</p>
             <h3>CNIT 131</h3>
@@ -36,21 +70,21 @@
             <p>Intermediate HTML &amp; CSS –this course contains intermediate techniques of HTML and CSS including principles of Responsive Web Design, CSS animation, etc. </p>
             <hr/>
 
-            <h2>Advanced Web Development Certificate</h2>
+            <h2 id="secondH2">Advanced Web Development Certificate</h2>
             <h3>CNIT 133</h3>
             <p>JavaScript, jQuery, AXAX –this course starts with the basics of JavaScript up to more advanced techniques and will introduce jQuery and AJAX.</p>
             <h3>CNIT 134</h3>
             <p>Server-Side Technologies: ASP.NET –The use of ASP.NET techniques to create dynamic, server-side web pages. Using MS Visual Studio. </p>
             <hr/>
 
-            <h2>Optional for Web Development Certificate</h2>
+            <h2 id="thirdH2">Optional for Web Development Certificate</h2>
             <h3>CNIT 129</h3>
             <p>Web 2.0 Technologies –the study and use of different web2.0 technologies and their integration within web pages. Students will develop blogs, social media pages, social bookmarking, maps, etc. </p>
             <h3>CNIT 131A</h3>
             <p>XML &amp; JSON –Introduction to XML, the use of XML to transfer data across different platforms; XSLT, CSS to style XML data. Introduction to JSON. </p> 
             <hr/>
 
-            <h2>Other Certificates</h2>
+            <h2 id="forthH2">Other Certificates</h2>
             <h3>Cybersecurity</h3>
             <p>For students interested in the network security area. </p>
             <h3>Advanced Cybersecurity</h3>
