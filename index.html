@@ -26,7 +26,11 @@
 
 
                 $('.content').find('li').each(function (i) {
-                    $(this).append(' <a href="#certificate'+ i+1 +'">Click Here</a>');
+                    $(this).append(' <a href="#certificate'+ (i+1) +'">Click Here</a>');
+                });
+
+                $('.content li').each(function(i) {
+                    $(this).attr('id', 'page'+(i+1));
                 });
 
 
@@ -53,10 +57,10 @@
     <body>
         <div class="content">
             <h1>Computer Networking and Information Technology</h1>
-           
+
             <ul></ul>
             
-            <h2 id="certificate01">Beginning Web Development Certificate</h2>
+            <h2 id="certificate1">Beginning Web Development Certificate</h2>
             <h3>CNIT 131H</h3>
             <p>Introduction to HTML &amp; CSS –a light introduction course to HTML and inline CSS that is completed in 6 weeks. This course cannot be used to substitute CNIT 131 for AS Degree, onlycertificates. HTML, CSS and FTP will be learned.</p>
             <h3>CNIT 131</h3>
@@ -65,21 +69,21 @@
             <p>Intermediate HTML &amp; CSS –this course contains intermediate techniques of HTML and CSS including principles of Responsive Web Design, CSS animation, etc. </p>
             <hr/>
 
-            <h2 id="certificate11">Advanced Web Development Certificate</h2>
+            <h2 id="certificate2">Advanced Web Development Certificate</h2>
             <h3>CNIT 133</h3>
             <p>JavaScript, jQuery, AXAX –this course starts with the basics of JavaScript up to more advanced techniques and will introduce jQuery and AJAX.</p>
             <h3>CNIT 134</h3>
             <p>Server-Side Technologies: ASP.NET –The use of ASP.NET techniques to create dynamic, server-side web pages. Using MS Visual Studio. </p>
             <hr/>
 
-            <h2 id="certificate21">Optional for Web Development Certificate</h2>
+            <h2 id="certificate3">Optional for Web Development Certificate</h2>
             <h3>CNIT 129</h3>
             <p>Web 2.0 Technologies –the study and use of different web2.0 technologies and their integration within web pages. Students will develop blogs, social media pages, social bookmarking, maps, etc. </p>
             <h3>CNIT 131A</h3>
             <p>XML &amp; JSON –Introduction to XML, the use of XML to transfer data across different platforms; XSLT, CSS to style XML data. Introduction to JSON. </p> 
             <hr/>
 
-            <h2 id="certificate31">Other Certificates</h2>
+            <h2 id="certificate4">Other Certificates</h2>
             <h3>Cybersecurity</h3>
             <p>For students interested in the network security area. </p>
             <h3>Advanced Cybersecurity</h3>
