@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <meta charset="utf-8">
+	  <meta name="description" content="working with D3">
+      <title>D3</title>	  
+<!--	  <script src="d3.min.js"></script>   -->
+	  <script src="d3.min15.js"></script>
+   </head>
+   <body>
+      <div></div>
+	  <div class="mydiv"></div>
+
+	  <script>
+         d3.select("div")
+           .datum("some text")
+           .text(function(d) { return "This is using existing div to add " + d });
+		   
+		 d3.select(".mydiv")
+		   .datum("new text")
+		   .append("h2")
+		   .text(function(d) { return "New h2 element with " + d });
+	  </script>
+   </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <meta charset="utf-8">
+	  <meta name="description" content="working with D3">
+      <title>D3</title>	  
+	 <!-- <script src="d3.min.js"></script> -->
+	  <script src="d3.min15.js"></script>
+   </head>
+   <body>
+      <p class="item">Paragraph 1</p>
+	  <p class="item">Paragraph 2</p>
+	  <p class="item">Paragraph 3</p>
+	  
+	  <script>
+	    var colors = [{ width: 200, background: '#2635D2'}, { width: 250, background: 'yellow'}, { width: 200, background: '#8F290E'}];
+        d3.selectAll(".item")
+		   .data(colors)
+		   .style("width", function(d) { return d.width + 'px'; })
+		   .style("background", function(d) { return d.background });
+	  </script>
+   </body>
+</html>

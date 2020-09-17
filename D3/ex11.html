@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <meta charset="utf-8">
+	  <meta name="description" content="working with D3">
+      <title>D3</title>	  
+	  <!-- <script src="d3.min.js"></script> -->
+	  <script src="d3.min15.js"></script>
+   </head>
+   <body>
+      <h1>Transition in the background color</h1>
+	  <section>
+	     <h2>Section with another transition</h2>
+		 <p>Paragraph inside the section</p>
+	  </section>
+	  
+	  <script>
+	     d3.select("h1").transition().duration(2000).style("background-color", "cyan");
+		 d3.select("section").transition().duration(3000).style("background-color", "purple");
+	  </script>
+   </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <meta charset="utf-8">
+	  <meta name="description" content="working with D3">
+      <title>D3</title>	  
+	<!--  <script src="d3.min.js"></script>  -->
+	  <script src="d3.min15.js"></script>
+   </head>
+   <body>
+      <div id="main">
+	  </div>
+	  
+	  <script>
+	     var w = 200;
+		 var h = 200;
+		 var mainSVG = d3.select("#main")
+		               .append("svg")
+					   .attr("width", w)
+					   .attr("height", h);
+		 mainSVG.append("line")
+		    .attr("x1", 50)
+			.attr("y1", 50)
+			.attr("x2", 200)
+			.attr("y2", 200)
+			.style("stroke", "red")
+			.style("stroke-width", 3);
+	  </script>
+   </body>
+</html>

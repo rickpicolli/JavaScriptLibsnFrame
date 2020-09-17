@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <meta charset="utf-8">
+	  <meta name="description" content="working with D3">
+      <title>D3</title>	  
+	 <!-- <script src="d3.min.js"></script>  -->
+	  <script src="d3.min15.js"></script>
+   </head>
+   <body>
+      <p class="item">Paragraph 1</p>
+	  <p class="item">Paragraph 2</p>
+	  <p class="item">Paragraph 3</p>
+	  
+	  <script>
+        d3.selectAll(".item:nth-child(2)").text("text modified");
+	  </script>
+   </body>
+</html>

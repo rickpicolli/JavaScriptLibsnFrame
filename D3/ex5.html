@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <meta charset="utf-8">
+	  <meta name="description" content="working with D3">
+      <title>D3</title>	  
+	 <!-- <script src="d3.min.js"></script> -->
+	  <script src="d3.min15.js"></script>
+   </head>
+   <body>
+      <ul id="students">
+	    <li></li>
+		<li></li>
+	  </ul>
+	  
+	  <script>
+         d3.select("#students").selectAll("li")
+           .data([50, 80, 70, 85, 35])
+           .text(function(d) { return "This element existed in the document " + d; })
+           .enter()
+           .append("li")
+           .text(function(d) { return "This element was mapped and created by D3 " + d; });
+	  </script>
+   </body>
+</html>

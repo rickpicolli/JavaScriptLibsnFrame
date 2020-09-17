@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Using D3 JS library">
+<title>D3</title>
+<link href="index.css" rel="stylesheet">
+<!-- <script src="d3.min.js"></script> -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+<h1>Weather in San Francisco</h1>
+<p id="result"></p>
+<script>
+/* 2487956 is the location ID of San Francisco in the Meta Weather API - the temperature comes in Celsius */
+/* the first part of the URL - https://cors-anywhere.herokuapp.com/ - is just to enable cross-origin requests from anywhere */
+/* this example is using arrow functions */
+const url = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/2487956/"
+d3.json(url)
+  .then(res => {
+    var tempC = parseInt(res.consolidated_weather[0].the_temp);
+	var tempF = ((9 * tempC) + 160) / 5;
+	var tempFout = tempF.toFixed(0);
+    document.getElementById('result').innerHTML = "Current temperature in San Francisco: " + tempFout + "°F";
+  })
+  .catch(() => {
+      document.getElementById('result').innerHTML = "Something was not right! No data!";
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <meta charset="utf-8">
+	  <meta name="description" content="working with D3">
+      <title>D3</title>	  
+	  <!-- <script src="d3.min.js"></script>  -->
+	  <script src="d3.min15.js"></script>
+      <style>
+	     .pie text { font-family: Arial, sans-serif; font-size: 1em; text-anchor: middle; }
+		 .pie path { stroke: white; }
+		 .title { fill: blue; font-style: italic; font-weight: bold; font-size: 1em;}
+	  </style>	 
+   </head>
+   <body>
+      <svg width="600" height="600"></svg>
+	  
+	  <script>
+	     var mySVG = d3.select("svg");
+		 var w = mySVG.attr("width");
+		 var h = mySVG.attr("height");
+		 var r = Math.min(w, h) / 2;
+		 
+		 var group = mySVG.append("g")
+		    .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
+			
+		 var color = d3.scaleOrdinal(['gray', 'green', 'brown', 'orange', 'yellow', 'red', 'purple']);
+		 
+		 var myPie = d3.pie().value(function(d) { return d.students; });
+		 
+		 var myPath = d3.arc()
+		    .outerRadius(r - 30).innerRadius(0);
+			
+		 var myLabel = d3.arc()
+		    .outerRadius(r).innerRadius(r - 150);
+
+		 d3.csv("students.csv")
+		   .then(function(data) {
+		 /* d3.csv("students.csv", function(err, data) {
+		    if (err) {
+			   throw err;
+			} */ 
+			
+			var myArc = group.selectAll(".pie")
+			   .data(myPie(data))
+			   .enter()
+			   .append("g")
+			   .attr("class", "pie");
+			   
+			myArc.append("path")
+			   .attr("d", myPath)
+			   .attr("fill", function(d) { return color(d.data.courses); });
+			   
+			console.log(myArc);
+			
+			myArc.append("text")
+			   .attr("transform", function(d) {
+			      return "translate(" + myLabel.centroid(d) + ")"; })
+				  
+			.text(function(d) { return d.data.courses });
+		  })
+		   .catch(function(error) {
+		      console.log(error);
+		   });
+		  
+		  mySVG.append("g")
+		     .attr("transform", "translate(" + (w / 2 - 60) + "," + 15 + ")")
+			 .append("text").text("CNIT Courses")
+			 .attr("class", "title")
+			 
+	  </script>
+   </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <meta charset="utf-8">
+	  <meta name="description" content="working with D3">
+      <title>D3</title>	  
+	<!--  <script src="d3.min.js"></script> -->
+	  <script src="d3.min15.js"></script>
+      <style>
+	     svg rect { fill: blue; }
+		 
+		 svg text { fill: yellow; font-size: 1em; font-family: sans-serif; text-anchor: end; }
+	  </style>	 
+   </head>
+   <body>
+	  <script>
+	     var data = [5, 15, 10, 8];
+		 var w = 400, scale = 20, barH = 40;
+		 
+		 var graphic = d3.select("body")
+		    .append("svg")
+			.attr("width", w)
+			.attr("height", barH * data.length);
+			
+		 var bar = graphic.selectAll("g")
+		    .data(data)
+			.enter()
+			.append("g")
+			.attr("transform", function(d, i) {
+			   return "translate(0," + i * barH + ")";
+			});
+		  
+		  bar.append("rect")
+		     .attr("width", function(d) {
+			    return d * scale;
+		  })
+		  .attr("height", barH - 1);
+		  
+		  bar.append("text")
+		     .attr("x", function(d) { return (d * scale); })
+			 .attr("y", barH / 2)
+			 .attr("dy", ".3em")
+			 .text(function(d) { return d; });
+	  </script>
+   </body>
+</html>

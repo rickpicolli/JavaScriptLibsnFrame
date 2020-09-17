@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <meta charset="utf-8">
+	  <meta name="description" content="working with D3">
+      <title>D3</title>	  
+	 <!-- <script src="d3.min.js"></script> -->
+	  <script src="d3.min15.js"></script>
+	  <style>
+	     .xyz { color:red; }
+		 .biggerfont { font-size: 2.5em; }
+	  </style>
+   </head>
+   <body>
+      <header>More D3</header>
+      <article class="xyz">
+	     <h2>Example 2</h2>
+		 <p>Paragraph in the article</p>
+	  </article>
+	  
+	  <script>
+	     d3.select("header").html("<h1>A new h1 with D3 <span>span inside h1</span></h1>");
+		 d3.select(".xyz").attr("style", "font-style: italic");
+		 d3.select("h2").style("color", "blue").text("Modified H2");
+	  </script>
+   </body>
+</html>

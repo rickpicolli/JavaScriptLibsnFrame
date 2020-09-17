@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <meta charset="utf-8">
+	  <meta name="description" content="working with D3">
+      <title>D3</title>	  
+	 <!-- <script src="d3.min.js"></script> -->
+	  <script src="d3.min15.js"></script>
+   </head>
+   <body>
+	  
+	  <script>
+	     var w = 600;
+		 var h = 400;
+		 var data = [20, 45, 30];
+		 var colors = ['red', 'blue', 'green'];
+		 
+		 var svg = d3.select("body")
+		    .append("svg")
+			.attr("width", w)
+			.attr("height", h);
+			
+		 var group = svg.selectAll("g")
+		    .data(data)
+			.enter()
+			.append("g")
+			.attr("transform", function(d, i) {
+			   return "translate(0,0)";
+			})
+			
+		 group.append("circle")
+		    .attr("cx", function(d, i) { return i*90 + 50; })
+			.attr("cy", function(d, i) { return 75; })
+			.attr("r", function(d) { return d; })
+			.attr("fill", function(d, i) { return colors[i]; })
+			
+		 group.append("text")
+		    .attr("x", function(d, i) { return i*90 + 40; })
+			.attr("y", 80)
+			.attr("stroke", "white")
+			.attr("font-family", "Arial")
+			.text(function(d) { return d; });
+	  </script>
+   </body>
+</html>
