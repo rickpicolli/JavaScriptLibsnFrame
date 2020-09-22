@@ -6,8 +6,11 @@
 <title>D3 Homework</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
-<!-- <script src="d3.min15.js"></script> -->
-<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="d3.min15.js"></script>
+<svg width="1000" height="500"></svg> 
+<script type="text/javascript" src="hw3data.json"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+<!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
 <style>
 #chart rect{
   fill: #4aaeea;
@@ -29,126 +32,57 @@
   shape-rendering: crispEdges;
 }
 
+.bar {
+  fill: blue;
+}
+
 body{
-  background: #1a1a1a;
-  color : #eaeaea;
+  background: lightgray;
   padding : 10px;
 }
 </style>
 <script type="text/javascript">
-  var x = 2;
-  console.log("the value of X is = " + x)
-
-  var margin  = {top: 20, right: 20, bottom: 100, left: 60},
-        width   = 600 - margin.left - margin.right,
-        height  = 400 - margin.top - margin.bottom,
-        x       = d3.scale.ordinal().rangeRoundBands([0,width], 0.5),
-        y       = d3.scale.linear().range([height,0]);
-
-//draw axis
-    var xAxis   = d3.svg.axis()
-        .scale(x)
-        .orient("bottom");
-	var yAxis   = d3.svg.axis()
-        .scale(y)
-        .orient("left")
-        .ticks(5)
-        .innerTickSize(-width)
-        .outerTickSize(0)
-        .tickPadding(10);
-
- var svg     = d3.select("#wordCountContainer")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-d3.json("hw3data.json", function (data)
-    {
-        x.domain(data.map(function (d)
-        {
-            return d.name;
-        }));
-
-        y.domain([0, d3.max(data, function (d)
-        {
-            return d.wc;
-        })]);
-
-        svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0, " + height + ")")
-            .call(xAxis)
-            .selectAll("text")
-            .style("text-anchor", "middle")
-            .attr("dx", "-0.5em")
-            .attr("dy", "-.55em")
-            .attr("y", 30)
-            .attr("transform", "rotate(0)" );
-
-        svg.append("g")
-            .attr("class", "y axis")
-            .call(yAxis)
-            .append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 5)
-            .attr("dy", "0.8em")
-            .attr("text-anchor", "end")
-            .text("Word Count");
-
-        svg.selectAll("bar")
-            .data(data)
-            .enter()
-            .append("rect")
-            .style("fill", "orange")
-            .attr("x", function(d)
-            {
-                return x(d.name);
-            })
-            .attr("width", x.rangeBand())
-            .attr("y", function (d)
-            {
-                return y(d.wc);
-            })
-            .attr("height", function (d)
-            {
-                return height - y(d.wc);
-            });
-		
-})
-
-      // $(function() {
-      //   var hw3d = [];
-
-      //   $.getJSON('hw3data.json', function(data) {
-      //     $.each(data.student, function(i, f) {
-      //       var tblrow = '<tr>' + 
-      //         '<td>' + f.term + '</td>' +
-      //         '<td>' + f.students + '</td>' +
-      //         '</tr>'
-      //         $(tblrow).appendTo('#hw3d tbody');
-      //     });
-      //   });
-      // });
 
 
+      var svg = d3.select("svg");
+          var margin = 200;
+          var w = svg.attr("width") - margin;
+          var h = svg.attr("height") - margin;
+          var x = d3.scaleBand().range([0, w]).padding(0.4);
+          var y = d3.scaleLinear().range([h, 0]);
+          var g = svg.append("g")
+            .attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+          d3.json("hw3data.json").then(function(data) {
+              x.domain(data.map(function(d) { return d.term; }));
+              y.domain([0, d3.max(data, function(d) { return d.students; })]);
+                
+              g.append("g")
+                .attr("transform", "translate(0," + h + ")")
+                .call(d3.axisBottom(x))
+                
+              g.append("g")
+                .attr("transform", "translate(0, 0)")
+                .call(d3.axisLeft(y))
+                
+              g.selectAll(".bar")
+                .data(data)
+                .enter()
+                .append("rect")
+                .attr("class", "bar")
+                .attr("x", function(d) { return x(d.term); })
+                .attr("y", function(d) { return y(d.students); })
+                .attr("width", x.bandwidth())
+                .attr("height", function(d) { return h - y(d.students); });
+          });  
+          
 </script>
 </head>
 <body>
 
-  <form id="form1" runat="server">      
+  <svg width="700" height="700"></svg>
+
   <div id="chart"></div> 
 
-<div id="chartContainer"></div> 
-
-<div class = "graph" id="wordCountContainer"></div>
-
-
-<p>hello world</p>
-<!-- <script src="https://d3js.org/d3.v5.js"></script> -->
-<script src="d3.min15.js"></script> 
-<script>
-</script>
 </body>
 </html>
