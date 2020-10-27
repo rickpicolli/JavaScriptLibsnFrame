@@ -1,0 +1,20 @@
+<h1>Check it out the our new products!!</h1>
+<!-- <ul>
+ <li *ngFor="let products of Products">
+  <p>
+    {{products.shortdesc}}<br>
+    {{products.longdesc}}<br>
+    Size: {{products.unitsize}} |`
+    Price per unit: {{products.unitprice}}
+    </p>
+ </li>
+</ul>  -->
+<div class="product-container">
+    <div *ngFor="let products of Products"> 
+        <b>{{products.shortdesc}}</b><br>
+        {{products.longdesc}}<br>
+        Size: {{products.unitsize}} |
+        Price per unit: {{products.unitprice}}<br>
+        <p></p>
+    </div>
+</div>
