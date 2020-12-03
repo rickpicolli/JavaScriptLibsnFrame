@@ -1,5 +1,6 @@
 <template>
     <div>
+        <p>{{ todo.title}}</p>
     <!-- <div class="ui centered card">
         <div class="content" v-show="!isEditing">
             <div class="header">
@@ -47,5 +48,8 @@
 export default {
     // props: ['todo'],
     name: 'Todo',
+    props: [
+        "todo"
+    ]
 };
 </script>

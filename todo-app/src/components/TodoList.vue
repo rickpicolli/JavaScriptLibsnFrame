@@ -38,12 +38,12 @@
 
 
 
-<!-- 
+
     <ul>
-        <li> Todo A </li> 
-        <li> Todo B </li> 
-        <li> Todo C </li> 
-    </ul>  -->
+        <li v-bind:key="todo.id" v-for="todo in todos">
+            <Todo v-bind:todo="todo" />
+        </li> 
+    </ul> 
   </div>
 </template>
 
@@ -57,6 +57,9 @@ export default {
     components: {
         Todo,
     },
+    props: [
+        "todos"
+    ]
 };
 </script>
 <style>

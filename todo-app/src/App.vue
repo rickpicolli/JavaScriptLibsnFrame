@@ -3,7 +3,7 @@
     <!-- <img src="./assets/logo.png"> -->
     <!-- <TodoList/> -->
     <!-- <todo-list></todo-list> -->
-    <Todos />
+    <Todos v-bind:todos="todos"/>
   </div>
 </template>
 
@@ -32,10 +32,15 @@ export default {
         title: 'Cook food',
         completed: false
       }, {
-        title: 'Todo D',
-        project: 'Project D',
-        done: false
-      }],
+        id: 4,
+        title: 'Clean up room',
+        completed: false
+      }, {
+        id: 5,
+        title: 'Finish work',
+        completed: false
+      }
+      ],
     };
   },
 };
